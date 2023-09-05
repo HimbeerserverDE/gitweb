@@ -1,0 +1,15 @@
+networks:
+  httpsvc:
+    name: httpsvc
+    external: true
+services:
+  gitweb:
+    build: .
+    container_name: gitweb
+    networks:
+      - httpsvc
+    volumes:
+      - type: bind
+      source: ./repos
+      target: /usr/local/apache2/git
+    restart: always
