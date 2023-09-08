@@ -3,7 +3,7 @@
 	order cgi before respond
 }
 
-http://gitweb {
+http://git.himbeerserver.de {
 	handle_path /cgit/* {
 		root * /usr/share/webapps/cgit
 		file_server
