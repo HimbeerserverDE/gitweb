@@ -1,3 +1,3 @@
 # gitweb
 
-Run apache2 gitweb in a docker container.
+Run caddy-based cgit in a docker container.
