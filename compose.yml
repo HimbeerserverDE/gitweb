@@ -10,6 +10,6 @@ services:
       - httpsvc
     volumes:
       - type: bind
-        source: ./repos
+        source: ./repos/
         target: /usr/local/apache2/git
     restart: always
