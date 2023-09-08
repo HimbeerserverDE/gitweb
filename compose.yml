@@ -10,6 +10,15 @@ services:
       - httpsvc
     volumes:
       - type: bind
+        source: Caddyfile
+        target: /etc/caddy/Caddyfile
+      - type: bind
         source: repos/
-        target: /usr/local/apache2/git
+        target: /srv/git
+      - gitweb_config:/config
+      - gitweb_data:/data
     restart: always
+volumes:
+  gitweb_config:
+  gitweb_data:
+    external: true
