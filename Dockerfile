@@ -1,8 +1,9 @@
-FROM httpd:2.4
+FROM caddy:2.7.4-builder-alpine AS builder
+RUN xcaddy build v2.7.4 \
+	--with github.com/aksdb/caddy-cgi/v2
 
-RUN apt update && apt install -y gitweb
+FROM caddy:2.7.4-alpine
+COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 
-COPY ./httpd.conf /usr/local/apache2/conf/httpd.conf
-COPY ./gitweb.conf /etc/gitweb.conf
-
-RUN cp -rp /usr/share/gitweb/ /usr/local/apache2/gitweb
+RUN apk add cgit python3 py3-markdown py3-pygments
+COPY cgitrc /etc/cgitrc
