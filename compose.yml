@@ -17,7 +17,7 @@ services:
         target: /srv/git
       - gitweb_config:/config
       - gitweb_data:/data
-    restart: always
+    restart: unless-stopped
 volumes:
   gitweb_config:
   gitweb_data:
