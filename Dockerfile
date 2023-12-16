@@ -1,8 +1,8 @@
-FROM caddy:2.7.4-builder-alpine AS builder
-RUN xcaddy build v2.7.4 \
+FROM caddy:2.7.5-builder-alpine AS builder
+RUN xcaddy build v2.7.5 \
 	--with github.com/aksdb/caddy-cgi/v2
 
-FROM caddy:2.7.4-alpine
+FROM caddy:2.7.5-alpine
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 
 RUN apk add cgit python3 py3-markdown py3-pygments
